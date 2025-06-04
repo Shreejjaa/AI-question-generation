@@ -1,0 +1,92 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Question Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>AI Question Generator</h2>
+        <form id="questionForm" method="post" action="/generate">
+            <input type="text" name="subject" placeholder="Subject" required>
+            <input type="text" name="chapter" placeholder="Chapter" required>
+            <input type="number" name="num_questions" placeholder="Number of Questions" required>
+            <select name="difficulty" required>
+                <option value="">Select Difficulty</option>
+                <option>Easy</option>
+                <option>Medium</option>
+                <option>Hard</option>
+            </select>
+            <select name="qtype" required>
+                <option value="">Select Question Type</option>
+                <option>MCQ</option>
+                <option>Short Answer</option>
+                <option>Long Answer</option>
+            </select>
+            <button type="submit">Generate</button>
+        </form>
+        {% if questions %}
+            <div class="results">
+                <h3>Generated Questions:</h3>
+                <pre>{{ questions }}</pre>
+            </div>
+        {% endif %}
+
+    </div>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Question Generator</title>
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='styles.css') }}"
+  >
+  <style>
+    /* quick inline styling if you don't have styles.css */
+    body { font-family: sans-serif; background: #f9f9f9; }
+    .container { max-width: 600px; margin: 2rem auto; padding: 1rem; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    input, select, button { width: 100%; padding: 0.5rem; margin: 0.5rem 0; }
+    button { background: #007bff; color: #fff; border: none; cursor: pointer; }
+    button:hover { background: #0056b3; }
+    .generated-questions { margin-top: 1.5rem; }
+    .generated-questions ol { padding-left: 1.2rem; }
+    .generated-questions li { margin-bottom: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>AI Question Generator</h2>
+    <form method="post" action="/generate">
+      <input type="text"   name="subject"       placeholder="Subject"               required>
+      <input type="text"   name="chapter"       placeholder="Chapter"               required>
+      <input type="number" name="num_questions" placeholder="Number of Questions"   required>
+      <select name="difficulty" required>
+        <option value="">Select Difficulty</option>
+        <option>Easy</option>
+        <option>Medium</option>
+        <option>Hard</option>
+      </select>
+      <select name="qtype" required>
+        <option value="">Select Question Type</option>
+        <option>MCQ</option>
+        <option>Short Answer</option>
+        <option>Long Answer</option>
+      </select>
+      <button type="submit">Generate</button>
+    </form>
+
+    {% if questions %}
+      <div class="generated-questions">
+        {{ questions | safe }}
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
